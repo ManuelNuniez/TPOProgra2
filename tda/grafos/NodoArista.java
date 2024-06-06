@@ -1,3 +1,4 @@
+package tda.grafos;
 public class NodoArista {
 
 	int peso;

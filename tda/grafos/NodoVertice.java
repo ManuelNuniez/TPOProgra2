@@ -1,3 +1,4 @@
+package tda.grafos;
 public class NodoVertice {
 		
     int nodo;

@@ -1,4 +1,4 @@
-
+package tda.grafos;
 import tda.conjuntos.*;
 
 public interface GrafoTDA {

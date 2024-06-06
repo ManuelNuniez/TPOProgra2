@@ -1,4 +1,4 @@
-
+package tda.grafos;
 import tda.conjuntos.*;
 
 public class GrafoLA implements GrafoTDA {
