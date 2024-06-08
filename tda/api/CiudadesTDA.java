@@ -16,18 +16,3 @@ public interface CiudadesTDA {
 	public void UnirCiudades(int idOrigen, int idDestino, int distancia);
 	public int Distancia(int idOrigen, int idDestino);
 }
-
-
-/*  
- * 
- * Grafo: 1 -> 2 
- *         2 -> 4
- *          4 -> 3 
- * 
- * dict: 
- *        1: BsAs
- *        2: Mar del plata
- *        3: etc...
- *        4: ...
- * 
-*/

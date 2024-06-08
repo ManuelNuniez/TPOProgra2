@@ -2,48 +2,48 @@ package impl;
 
 import api.DiccionarioSimpleTDA;
 import api.CiudadesTDA;
-import api.ConjuntoTDA;
+import api.DiccionarioSimpleStrTDA;
 
 public class Ciudades implements CiudadesTDA {
 
     @Override
-    public ConjuntoTDA CargarCiudad(String nombre) {
+    public DiccionarioSimpleStrTDA CargarCiudad(String nombre) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA Ciudades(int idProvincia) {
+    public DiccionarioSimpleStrTDA Ciudades(int idProvincia) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA CiudadesExtremo() {
+    public DiccionarioSimpleStrTDA CiudadesExtremo() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA CiudadesFuertmenteConectadas() {
+    public DiccionarioSimpleTDA CiudadesFuertmenteConectadas() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA CiudadesPredecesoras(int idCiudad) {
+    public DiccionarioSimpleStrTDA CiudadesPredecesoras(int idCiudad) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA CiudadesPuente(int idOrigen, int idDestino) {
+    public DiccionarioSimpleStrTDA CiudadesPuente(int idOrigen, int idDestino) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ConjuntoTDA CiudadesVecinas(int idCiudad) {
+    public DiccionarioSimpleStrTDA CiudadesVecinas(int idCiudad) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -55,7 +55,13 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public ConjuntoTDA Provincias() {
+    public void Inicializar() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public DiccionarioSimpleStrTDA Provincias() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -65,6 +71,5 @@ public class Ciudades implements CiudadesTDA {
         // TODO Auto-generated method stub
         
     }
-
 
 }
