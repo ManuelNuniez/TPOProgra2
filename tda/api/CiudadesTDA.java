@@ -1,6 +1,8 @@
 package api;
 
 public interface CiudadesTDA {	
+	public void Inicializar();
+
 	public DiccionarioSimpleStrTDA Provincias();
 	public DiccionarioSimpleStrTDA Ciudades(int idProvincia);
 	public DiccionarioSimpleStrTDA CargarCiudad(String nombre);
