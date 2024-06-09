@@ -4,17 +4,17 @@ import api.ConjuntoTDA;
 import api.DiccionarioSimpleStrTDA;
 
 public class DiccionarioSimpleStr implements DiccionarioSimpleStrTDA {
-    private class NodoDS {
+    private class NodoDString {
         int key;
         String value;
-        NodoDS next;
+        NodoDString next;
     }
     
-    NodoDS first;
+    NodoDString first;
 
     @Override
     public void Agregar(int clave, String valor) {
-        NodoDS newNode = new NodoDS();
+        NodoDString newNode = new NodoDString();
 
         ConjuntoTDA claves = Claves();
 
@@ -25,7 +25,7 @@ public class DiccionarioSimpleStr implements DiccionarioSimpleStrTDA {
             first = newNode;
 
         }else if(claves.Pertenece(clave)){
-            NodoDS aux = first;
+            NodoDString aux = first;
             while (aux.key!=clave) {
                 aux = aux.next;
             }
@@ -42,7 +42,7 @@ public class DiccionarioSimpleStr implements DiccionarioSimpleStrTDA {
         ConjuntoTDA claves = new ConjuntoDinamico();
         claves.InicializarConjunto();
 
-        NodoDS aux= first;
+        NodoDString aux= first;
 
         while (aux != null) {
             claves.Agregar(aux.key);
@@ -61,8 +61,8 @@ public class DiccionarioSimpleStr implements DiccionarioSimpleStrTDA {
             return;
         }
 
-        NodoDS last = null;
-        NodoDS curr = first;
+        NodoDString last = null;
+        NodoDString curr = first;
         while (curr != null && curr.key != clave) {
             last = curr;
             curr = curr.next;
@@ -80,7 +80,7 @@ public class DiccionarioSimpleStr implements DiccionarioSimpleStrTDA {
 
     @Override
     public String Recuperar(int clave) {
-        NodoDS curr = first;
+        NodoDString curr = first;
 		while (curr != null && curr.key != clave) {
 			curr = curr.next;
 		}

@@ -1,19 +1,40 @@
 
+import algoritmos.MetodosConjunto;
+import algoritmos.MetodosDiccSimple;
+import api.CiudadesTDA;
+import impl.Ciudades;
+
 import api.*;
 import impl.*;
 
 public class TPO {
-    private void CargarDatos() {
-        
+    private static void CargarDatos(CiudadesTDA ciudades) {
+        ciudades.CargarProvincia("Bs. As.");
+        ciudades.CargarProvincia("Córdoba");
+        ciudades.CargarProvincia("Rio Negro");
+
+        ciudades.CargarCiudad("Ciudad de Bs. As.", 1);
+        ciudades.CargarCiudad("Ciudad de Córdoba", 2);
+        ciudades.CargarCiudad("Bariloche", 3);
+
+        // ciudades.UnirCiudades(1, 2, 722);
+        // ciudades.UnirCiudades(2, 3, 1530);
+        // ciudades.UnirCiudades(3, 1, 1578);
+        // ciudades.UnirCiudades(1, 3, 1578);
     }
 
     public static void main(String[] args) {
-        DiccionarioSimpleStrTDA d = new DiccionarioSimpleStr();
+        CiudadesTDA argentina = new Ciudades();
+        argentina.Inicializar();
+        
+        // CargarDatos(argentina);
+        //MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesFuertmenteConectadas());
+        //MetodosConjunto.ImprimirConjunto()
 
-        d.Agregar(0, "hola");
-        d.Agregar(1, "chau");
+        GrafoTDA g = new GrafoDinamico();
 
-        System.out.println(d.Recuperar(0));
-        System.out.println(d.Recuperar(1));
+        g.AgregarVertice(1);
+        // g.AgregarVertice(2);
+        // g.AgregarVertice(3);
     }
 }

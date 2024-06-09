@@ -3,13 +3,14 @@ package api;
 public interface CiudadesTDA {	
 	public void Inicializar();
 
-	public DiccionarioSimpleStrTDA Provincias();
-	public DiccionarioSimpleStrTDA Ciudades(int idProvincia);
-	public DiccionarioSimpleStrTDA CargarCiudad(String nombre);
+	public void CargarProvincia(String nombreProvincia);
+	public DiccionarioSimpleStrTDA Provincias(); // devuelve provincias con sus Ids
+	public void CargarCiudad(String nombreCiudad, int idProvincia); // cambiamos string por int, sacamos el int a partir de un DiccSimple
+	public DiccionarioSimpleStrTDA Ciudades(int idProvincia); // no deberia ir un diccionario de diccionarios que nos devuelva todas las ciudades a partir de una provincia}]?
 	
 	public DiccionarioSimpleStrTDA CiudadesVecinas(int idCiudad);
 	public DiccionarioSimpleStrTDA CiudadesPuente(int idOrigen, int idDestino);
-	public DiccionarioSimpleStrTDA CiudadesPredecesoras(int idCiudad);
+	public ConjuntoTDA CiudadesPredecesoras(int idCiudad);
 	public DiccionarioSimpleStrTDA CiudadesExtremo();
 	public DiccionarioSimpleTDA CiudadesFuertmenteConectadas();
 
