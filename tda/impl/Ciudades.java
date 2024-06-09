@@ -142,20 +142,20 @@ public class Ciudades implements CiudadesTDA {
         GrafoTDA aux = new GrafoDinamico();
         aux = ciudades;
 
-        ciudadesPredecesoras.InicializarConjunto();
+        ciudadesVecinas.InicializarConjunto();
         aux.Vertices().Sacar(idCiudad);
 
         while (aux.Vertices() != null) {
             int ciudad = aux.Vertices().Elegir();
 
             if (aux.ExisteArista(idCiudad, ciudad)) {
-                ciudadesPredecesoras.Agregar(ciudad);
+                ciudadesVecinas.Agregar(ciudad);
             }
 
             aux.Vertices().Sacar(ciudad);            
         } 
 
-        return ciudadesPredecesoras;
+        return ciudadesVecinas;
     }
     }
 
