@@ -1,6 +1,5 @@
 
 import algoritmos.MetodosConjunto;
-import algoritmos.MetodosDiccSimple;
 import api.CiudadesTDA;
 import impl.Ciudades;
 

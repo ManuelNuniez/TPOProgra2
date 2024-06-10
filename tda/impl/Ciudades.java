@@ -6,8 +6,6 @@ import api.ConjuntoTDA;
 import api.DiccionarioSimpleStrTDA;
 import api.GrafoTDA;
 import api.DiccionarioMultipleTDA;
-import impl.Vertice;
-import impl.Arista;
 
 /*
 
@@ -156,7 +154,6 @@ public class Ciudades implements CiudadesTDA {
         } 
 
         return ciudadesPredecesoras;
-    }
     }
 
     @Override

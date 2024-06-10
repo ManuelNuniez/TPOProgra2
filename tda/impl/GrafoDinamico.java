@@ -3,19 +3,18 @@ package impl;
 import api.ConjuntoTDA;
 import api.GrafoTDA;
 
-public class Vertice {
-	int nodo;
-	Arista arista;
-	Vertice sigNodo;
-}
-
-public class Arista {
-	int peso;
-	Vertice nodoDestino;
-	Arista sigArista;
-}
-
 public class GrafoDinamico implements GrafoTDA {
+	private class Arista {
+		int peso;
+		Vertice nodoDestino;
+		Arista sigArista;
+	}
+
+	private class Vertice {
+		int nodo;
+		Arista arista;
+		Vertice sigNodo;
+	}
 
 
 	Vertice origen;
