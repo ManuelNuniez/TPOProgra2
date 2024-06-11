@@ -45,7 +45,18 @@ public class Ciudades implements CiudadesTDA {
     DiccionarioSimpleStrTDA nombresCiudades;
     DiccionarioSimpleStrTDA nombresProvincias;
     DiccionarioMultipleTDA ciudadesProvincias;
+    
+    @Override
+    public void Inicializar() {
+        ultimaCiudad = 1;
+        ultimaProvincia = 1;
 
+        ciudades = new GrafoDinamico();
+        nombresCiudades = new DiccionarioSimpleStr();
+        nombresProvincias = new DiccionarioSimpleStr();
+        ciudadesProvincias = new DiccionarioMultipleDinamico();
+    }
+    
     @Override
     public void CargarProvincia(String nombreProvincia) {
         nombresProvincias.Agregar(ultimaProvincia, nombreProvincia);
@@ -80,9 +91,29 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public DiccionarioSimpleStrTDA CiudadesExtremo() {
-        
-        
-        return null;
+        ConjuntoTDA aux = new ConjuntoDinamico();
+        ConjuntoTDA aux2 = new ConjuntoDinamico();
+        ConjuntoTDA ciudadesExtremo = new ConjuntoDinamico();
+        int cont = 0;
+
+        aux = ciudades.Vertices();
+
+        while (!aux.ConjuntoVacio()) {
+            int ciudad = aux.Elegir();
+            aux.Sacar(ciudad);
+
+            aux2 = ciudades.Vertices();
+            aux2.Sacar(ciudad);
+
+            while (!aux2.ConjuntoVacio() && cont == 0) {
+                int ciudadAComparar = aux2.Elegir();
+                aux2.Sacar(ciudadAComparar);
+
+                if (ciudades.ExisteArista())
+                
+            }
+        }
+
     }
 
     @Override
@@ -133,14 +164,13 @@ public class Ciudades implements CiudadesTDA {
         // TODO Auto-generated method stub
         return null;
     }
+    
 
     @Override
-    public DiccionarioSimpleStrTDA CiudadesVecinas(int idCiudad) {
+    public ConjuntoTDA CiudadesVecinas(int idCiudad) {
         ConjuntoTDA ciudadesVecinas = new ConjuntoDinamico();
         GrafoTDA aux = new GrafoDinamico();
-        aux = ciudades;
-
-        ciudadesVecinas.InicializarConjunto();
+        aux = ciudades;        ciudadesVecinas.InicializarConjunto();
         aux.Vertices().Sacar(idCiudad);
 
         while (aux.Vertices() != null) {
@@ -161,16 +191,6 @@ public class Ciudades implements CiudadesTDA {
         return 0;
     }
 
-    @Override
-    public void Inicializar() {
-        ultimaCiudad = 1;
-        ultimaProvincia = 1;
-
-        ciudades = new GrafoDinamico();
-        nombresCiudades = new DiccionarioSimpleStr();
-        nombresProvincias = new DiccionarioSimpleStr();
-        ciudadesProvincias = new DiccionarioMultipleDinamico();
-    }
 
     @Override
     public DiccionarioSimpleStrTDA Provincias() {
@@ -179,6 +199,13 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public void UnirCiudades(int idOrigen, int idDestino, int distancia) {
-        ciudades.AgregarArista(idOrigen, idDestino, distancia);        
+        ciudades.AgregarArista(idOrigen, idDestino, distancia);
     }
+
+    @Override
+    public void EliminarCiudades(int idCiudad) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'EliminarCiudades'");
+    }        
 }
+
