@@ -90,7 +90,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleStrTDA CiudadesExtremo() {
+    public DiccionarioSimpleStrTDA CiudadesExtremo() { // Falta terminarlo y mejorarlo
         ConjuntoTDA aux = new ConjuntoDinamico();
         ConjuntoTDA aux2 = new ConjuntoDinamico();
         ConjuntoTDA ciudadesExtremo = new ConjuntoDinamico();
@@ -109,7 +109,9 @@ public class Ciudades implements CiudadesTDA {
                 int ciudadAComparar = aux2.Elegir();
                 aux2.Sacar(ciudadAComparar);
 
-                if (ciudades.ExisteArista())
+                if (ciudades.ExisteArista(ciudad, ciudadAComparar)) {
+                    cont++;
+                }
                 
             }
         }
