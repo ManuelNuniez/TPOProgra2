@@ -8,13 +8,29 @@ import impl.*;
 
 public class TPO {
     private static void CargarDatos(CiudadesTDA ciudades) {
-        ciudades.CargarProvincia("Bs. As.");
-        ciudades.CargarProvincia("Córdoba");
-        ciudades.CargarProvincia("Rio Negro");
+        ciudades.CargarProvincia("Buenos Aires");
+        ciudades.CargarProvincia("Cordoba");
+        ciudades.CargarProvincia("Salta");
+        ciudades.CargarProvincia("Chubut");
 
-        ciudades.CargarCiudad("Ciudad de Bs. As.", 1);
-        ciudades.CargarCiudad("Ciudad de Córdoba", 2);
-        ciudades.CargarCiudad("Bariloche", 3);
+
+        ciudades.CargarCiudad("La Plata", 1);
+        ciudades.CargarCiudad("Mar del Plata", 1);
+        ciudades.CargarCiudad("Caba", 1);
+        ciudades.CargarCiudad("Tandil", 1);
+
+        ciudades.CargarCiudad("Ciudad de Cordoba", 2);
+        ciudades.CargarCiudad("Rio Cuartos", 2);
+        ciudades.CargarCiudad("Villa Carlos Paz", 2);
+
+        ciudades.CargarCiudad("Cafayate", 3);
+
+        ciudades.CargarCiudad("Rawson", 4);
+        ciudades.CargarCiudad("Trelew", 4);
+        ciudades.CargarCiudad("Puerto Madryn", 4);
+
+        
+
 
         // ciudades.UnirCiudades(1, 2, 722);
         // ciudades.UnirCiudades(2, 3, 1530);
