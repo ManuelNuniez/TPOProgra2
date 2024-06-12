@@ -215,8 +215,8 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public void EliminarCiudades(int idCiudad) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'EliminarCiudades'");
-    }        
+        ciudades.EliminarVertice(idCiudad); // No estoy seguro si acá sería algo más que esto, Santi F.
+    }
+
 }
 
