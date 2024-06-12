@@ -128,23 +128,30 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public ConjuntoTDA CiudadesFuertmenteConectadas() {
-        ConjuntoTDA fuertementeConectadas = new ConjuntoDinamico();
-        ConjuntoTDA ciudadesSinRevisar= ciudades.Vertices();
-        ConjuntoTDA auxCiudades = ciudades.Vertices();
-        
-        while (!ciudadesSinRevisar.ConjuntoVacio()) {
-            int ciudad1= ciudadesSinRevisar.Elegir();
-            ciudadesSinRevisar.Sacar(ciudad1);
-            auxCiudades.Sacar(ciudad1);
-    
-            int ciudad2= auxCiudades.Elegir();
-            auxCiudades.Sacar(ciudad2);
-            if (ciudades.ExisteArista(ciudad1, ciudad2) && ciudades.ExisteArista(ciudad2, ciudad1)) {
-                fuertementeConectadas.Agregar(ciudad1, ciudad2);
+        ConjuntoTDA conjuntoCiudades = new ConjuntoDinamico();
+        ConjuntoTDA conjuntoCiudadesComparar = new ConjuntoDinamico();
+        ConjuntoTDA ciudadesFuertementeConectadas = new ConjuntoDinamico();
+
+        conjuntoCiudades = ciudades.Vertices();
+
+        while (!conjuntoCiudades.ConjuntoVacio()) {
+            int ciudadElegida = conjuntoCiudades.Elegir();
+            conjuntoCiudades.Sacar(ciudadElegida);
+
+            conjuntoCiudadesComparar = ciudades.Vertices();
+            conjuntoCiudadesComparar.Sacar(ciudadElegida);
+
+            while (!conjuntoCiudadesComparar.ConjuntoVacio()) {
+                int ciudadComparar = conjuntoCiudadesComparar.Elegir();
+                conjuntoCiudadesComparar.Sacar(ciudadComparar);
+
+                if (ciudades.ExisteArista(ciudadElegida, ciudadComparar) && ciudades.ExisteArista(ciudadComparar, ciudadElegida)) {
+                    ciudadesFuertementeConectadas.Agregar(ciudadElegida);
+                }
             }
-        }        
-        
-        return fuertementeConectadas;
+        }
+
+        return ciudadesFuertementeConectadas;
     }
 
     @Override
