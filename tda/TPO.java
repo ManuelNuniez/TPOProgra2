@@ -8,28 +8,28 @@ import impl.*;
 
 public class TPO {
     private static void CargarDatos(CiudadesTDA ciudades) {
-        ciudades.CargarProvincia("Buenos Aires");
-        ciudades.CargarProvincia("Cordoba");
-        ciudades.CargarProvincia("Salta");
-        ciudades.CargarProvincia("Chubut");
+        ciudades.CargarProvincia("Buenos Aires"); // id 1
+        ciudades.CargarProvincia("Cordoba"); // id 2
+        ciudades.CargarProvincia("Salta"); // id 3
+        ciudades.CargarProvincia("Chubut"); //id 4
 
 
-        ciudades.CargarCiudad("La Plata", 1);
-        ciudades.CargarCiudad("Mar del Plata", 1);
-        ciudades.CargarCiudad("Caba", 1);
-        ciudades.CargarCiudad("Tandil", 1);
+        ciudades.CargarCiudad("La Plata", 1); // id 1
+        ciudades.CargarCiudad("Mar del Plata", 1); // id 2
+        ciudades.CargarCiudad("Caba", 1); // id 3
+        ciudades.CargarCiudad("Tandil", 1); // id 4
 
-        ciudades.CargarCiudad("Ciudad de Cordoba", 2);
-        ciudades.CargarCiudad("Rio Cuartos", 2);
-        ciudades.CargarCiudad("Villa Carlos Paz", 2);
+        ciudades.CargarCiudad("Ciudad de Cordoba", 2); // id 5
+        ciudades.CargarCiudad("Rio Cuartos", 2); // id 6
+        ciudades.CargarCiudad("Villa Carlos Paz", 2); // id 7
 
-        ciudades.CargarCiudad("Cafayate", 3);
+        ciudades.CargarCiudad("Cafayate", 3); // id 8
 
-        ciudades.CargarCiudad("Rawson", 4);
-        ciudades.CargarCiudad("Trelew", 4);
-        ciudades.CargarCiudad("Puerto Madryn", 4);
+        ciudades.CargarCiudad("Rawson", 4); // id 9
+        ciudades.CargarCiudad("Trelew", 4); // id 10
+        ciudades.CargarCiudad("Puerto Madryn", 4); // id 11
 
-        
+        ciudades.UnirCiudades(0, 0, 0);
 
 
         // ciudades.UnirCiudades(1, 2, 722);
@@ -51,5 +51,8 @@ public class TPO {
         g.AgregarVertice(1);
         // g.AgregarVertice(2);
         // g.AgregarVertice(3);
+
+        argentina.Provincias();
+        argentina.CiudadesVecinas(3);
     }
 }
