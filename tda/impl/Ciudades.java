@@ -74,7 +74,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleStrTDA Ciudades(int idProvincia) { // falla
+    public DiccionarioSimpleStrTDA CiudadesPorProvincia(int idProvincia) {
         
         DiccionarioSimpleStrTDA ciudadesPorProvincia = new DiccionarioSimpleStr();
         ciudadesPorProvincia.InicializarDiccionario();
@@ -223,6 +223,4 @@ public class Ciudades implements CiudadesTDA {
     public void EliminarCiudades(int idCiudad) {
         ciudades.EliminarVertice(idCiudad); // No estoy seguro si acá sería algo más que esto, Santi F.
     }
-
 }
-
