@@ -9,11 +9,11 @@ public interface CiudadesTDA {
 	public DiccionarioSimpleStrTDA Ciudades(int idProvincia); // no deberia ir un diccionario de diccionarios que nos devuelva todas las ciudades a partir de una provincia}]?
 	public void EliminarCiudades(int idCiudad);
 	
-	public ConjuntoTDA CiudadesVecinas(int idCiudad);
+	public ConjuntoTDA CiudadesVecinas(int idCiudad); // funciona
 	public DiccionarioSimpleStrTDA CiudadesPuente(int idOrigen, int idDestino);
-	public ConjuntoTDA CiudadesPredecesoras(int idCiudad);
+	public ConjuntoTDA CiudadesPredecesoras(int idCiudad); // funciona
 	public ConjuntoTDA CiudadesExtremo(); // funciona
-	public ConjuntoTDA CiudadesFuertmenteConectadas();
+	public ConjuntoTDA CiudadesFuertmenteConectadas(); // funciona
 
 	public void UnirCiudades(int idOrigen, int idDestino, int distancia);
 	public int Distancia(int idOrigen, int idDestino);
