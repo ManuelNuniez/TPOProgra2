@@ -90,31 +90,39 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleStrTDA CiudadesExtremo() { // Falta terminarlo y mejorarlo
-        ConjuntoTDA aux = new ConjuntoDinamico();
-        ConjuntoTDA aux2 = new ConjuntoDinamico();
+    public ConjuntoTDA CiudadesExtremo() {
+        ConjuntoTDA conjuntoCiudades = new ConjuntoDinamico();
+        ConjuntoTDA conjuntoCiudadesComparar = new ConjuntoDinamico();
         ConjuntoTDA ciudadesExtremo = new ConjuntoDinamico();
         int cont = 0;
 
-        aux = ciudades.Vertices();
+        conjuntoCiudades = ciudades.Vertices();
 
-        while (!aux.ConjuntoVacio()) {
-            int ciudad = aux.Elegir();
-            aux.Sacar(ciudad);
+        while (!conjuntoCiudades.ConjuntoVacio()) {
+            int ciudadElegida = conjuntoCiudades.Elegir();
+            conjuntoCiudades.Sacar(ciudadElegida);
 
-            aux2 = ciudades.Vertices();
-            aux2.Sacar(ciudad);
+            conjuntoCiudadesComparar = ciudades.Vertices();
+            conjuntoCiudadesComparar.Sacar(ciudadElegida);
 
-            while (!aux2.ConjuntoVacio() && cont == 0) {
-                int ciudadAComparar = aux2.Elegir();
-                aux2.Sacar(ciudadAComparar);
+            while (!conjuntoCiudadesComparar.ConjuntoVacio() && cont == 0) {
+                int ciudadComparar = conjuntoCiudadesComparar.Elegir();
+                conjuntoCiudadesComparar.Sacar(ciudadComparar);
 
-                if (ciudades.ExisteArista(ciudad, ciudadAComparar)) {
+                if (ciudades.ExisteArista(ciudadElegida, ciudadComparar)) {
                     cont++;
                 }
-                
+            }
+
+            if (cont == 0) {
+                ciudadesExtremo.Agregar(ciudadElegida);
+
+            } else {
+                cont = 0;
             }
         }
+
+        return ciudadesExtremo;
 
     }
 
