@@ -74,7 +74,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleStrTDA Ciudades(int idProvincia) {
+    public DiccionarioSimpleStrTDA Ciudades(int idProvincia) { // falla
         
         DiccionarioSimpleStrTDA ciudadesPorProvincia = new DiccionarioSimpleStr();
         ciudadesPorProvincia.InicializarDiccionario();
@@ -127,8 +127,8 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleTDA CiudadesFuertmenteConectadas() {
-        DiccionarioSimpleTDA fuertementeConectadas = new DiccionarioSimpleDinamico();
+    public ConjuntoTDA CiudadesFuertmenteConectadas() {
+        ConjuntoTDA fuertementeConectadas = new ConjuntoDinamico();
         ConjuntoTDA ciudadesSinRevisar= ciudades.Vertices();
         ConjuntoTDA auxCiudades = ciudades.Vertices();
         
@@ -150,20 +150,19 @@ public class Ciudades implements CiudadesTDA {
     @Override
     public ConjuntoTDA CiudadesPredecesoras(int idCiudad) {
         ConjuntoTDA ciudadesPredecesoras = new ConjuntoDinamico();
-        GrafoTDA aux = new GrafoDinamico();
-        aux = ciudades;
+        ConjuntoTDA ciudadesComparar = ciudades.Vertices();
 
         ciudadesPredecesoras.InicializarConjunto();
-        aux.Vertices().Sacar(idCiudad);
+        ciudadesComparar.Sacar(idCiudad);
 
-        while (aux.Vertices() != null) {
-            int ciudad = aux.Vertices().Elegir();
+        while (!ciudadesComparar.ConjuntoVacio()) {
+            int ciudad = ciudadesComparar.Elegir();
 
-            if (aux.ExisteArista(idCiudad, ciudad)) {
+            if (ciudades.ExisteArista(ciudad, idCiudad)) {
                 ciudadesPredecesoras.Agregar(ciudad);
             }
 
-            aux.Vertices().Sacar(ciudad);            
+            ciudadesComparar.Sacar(ciudad);            
         } 
 
         return ciudadesPredecesoras;
@@ -187,7 +186,7 @@ public class Ciudades implements CiudadesTDA {
         while (!ciudadesComparar.ConjuntoVacio()) {
             int ciudadVecina = ciudadesComparar.Elegir();
 
-            if (ciudades.ExisteArista(idCiudad, ciudadVecina)) {
+            if (ciudades.ExisteArista(idCiudad, ciudadVecina) != ciudades.ExisteArista(ciudadVecina, idCiudad)) {
                 ciudadesVecinas.Agregar(ciudadVecina);
             }
 

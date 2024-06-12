@@ -12,8 +12,8 @@ public interface CiudadesTDA {
 	public ConjuntoTDA CiudadesVecinas(int idCiudad);
 	public DiccionarioSimpleStrTDA CiudadesPuente(int idOrigen, int idDestino);
 	public ConjuntoTDA CiudadesPredecesoras(int idCiudad);
-	public ConjuntoTDA CiudadesExtremo();
-	public DiccionarioSimpleTDA CiudadesFuertmenteConectadas();
+	public ConjuntoTDA CiudadesExtremo(); // funciona
+	public ConjuntoTDA CiudadesFuertmenteConectadas();
 
 	public void UnirCiudades(int idOrigen, int idDestino, int distancia);
 	public int Distancia(int idOrigen, int idDestino);
