@@ -179,18 +179,19 @@ public class Ciudades implements CiudadesTDA {
     @Override
     public ConjuntoTDA CiudadesVecinas(int idCiudad) {
         ConjuntoTDA ciudadesVecinas = new ConjuntoDinamico();
-        GrafoTDA aux = new GrafoDinamico();
-        aux = ciudades;        ciudadesVecinas.InicializarConjunto();
-        aux.Vertices().Sacar(idCiudad);
+        ConjuntoTDA ciudadesComparar = new ConjuntoDinamico();
 
-        while (aux.Vertices() != null) {
-            int ciudad = aux.Vertices().Elegir();
+        ciudadesComparar = ciudades.Vertices();
+        ciudadesComparar.Sacar(idCiudad);
 
-            if (aux.ExisteArista(idCiudad, ciudad)) {
-                ciudadesVecinas.Agregar(ciudad);
+        while (!ciudadesComparar.ConjuntoVacio()) {
+            int ciudadVecina = ciudadesComparar.Elegir();
+
+            if (ciudades.ExisteArista(idCiudad, ciudadVecina)) {
+                ciudadesVecinas.Agregar(ciudadVecina);
             }
 
-            aux.Vertices().Sacar(ciudad);            
+            ciudadesComparar.Sacar(ciudadVecina);            
         } 
 
         return ciudadesVecinas;
