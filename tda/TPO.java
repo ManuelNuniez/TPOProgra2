@@ -81,7 +81,7 @@ public class TPO {
         //argentina.Ciudades(1); // falla
         //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3)); // funciona :)
         //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo()); // funciona :)
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3)); //funciona :)
-        MetodosConjunto.ImprimirConjunto(argentina.CiudadesFuertmenteConectadas());
+        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3)); // funciona :)
+        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesFuertmenteConectadas()); // funciona :)
     }
 }
