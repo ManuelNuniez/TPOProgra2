@@ -44,9 +44,9 @@ public class Ciudades implements CiudadesTDA {
     int ultimaCiudad;
 
     GrafoTDA ciudades;
-    DiccionarioSimpleStrTDA nombresCiudades;
-    DiccionarioSimpleStrTDA nombresProvincias;
-    DiccionarioMultipleTDA ciudadesProvincias;
+    DiccionarioSimpleStrTDA nombresCiudades; // claves: id ciudades / valores: nombres ciudades
+    DiccionarioSimpleStrTDA nombresProvincias; // claves: id provincias / valroes: nombres provincias
+    DiccionarioMultipleTDA ciudadesProvincias; // claves: id provincias / valores: id ciudades
     
     @Override
     public void Inicializar() {
@@ -67,9 +67,8 @@ public class Ciudades implements CiudadesTDA {
     }
     
     @Override
-    public void CargarProvincia(String nombreProvincia) { // preguntar
+    public void CargarProvincia(String nombreProvincia) {
         nombresProvincias.Agregar(ultimaProvincia, nombreProvincia);
-        
 
         ultimaProvincia++;
     }
