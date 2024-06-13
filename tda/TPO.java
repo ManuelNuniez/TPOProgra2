@@ -23,25 +23,18 @@ public class TPO {
         ciudades.CargarCiudad("Tandil", 1); // id 4
 
         ciudades.UnirCiudades(1, 2, 10);
+        ciudades.UnirCiudades(2, 3, 20);
     }
 
     public static void main(String[] args) {
-        // CiudadesTDA argentina = new Ciudades();
-        // argentina.Inicializar();
+        CiudadesTDA argentina = new Ciudades();
+        argentina.Inicializar();
         
-        // CargarDatos(argentina);
-        // int asd = argentina.Distancia(1, 2);
-        // System.out.println(asd);
+        CargarDatos(argentina);
+        int asd = argentina.Distancia(1, 3);
+        System.out.println(asd);
 
-        DiccionarioSimpleStrTDA dicc = new DiccionarioSimpleStr();
-        dicc.InicializarDiccionario();
-
-        dicc.Agregar(1, "sdd");
-        dicc.Agregar(2, "asdddd");
-
-        ConjuntoTDA conj = dicc.Claves();
-        algoritmos.MetodosConjunto.ImprimirConjunto(conj);
-
+        // argentina.Provincias();
 
         // System.out.println(dicc.Recuperar(1));
         // System.out.println(dicc.Recuperar(2));

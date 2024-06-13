@@ -4,7 +4,7 @@ import api.ColaPrioridadTDA;
 import api.ConjuntoTDA;
 import api.DiccionarioSimpleTDA;
 import api.GrafoTDA;
-import algoritmos.MetodosConjunto;
+import algoritmos.metodosGrafos;
 
 public class GrafoDinamico implements GrafoTDA {
 	private class Arista {
@@ -126,14 +126,13 @@ public class GrafoDinamico implements GrafoTDA {
 		Arista aux = nodo.arista;
 		int peso = 0;
 
-	
 		while (aux != null && aux.nodoDestino.nodo != idDestino) {
-			
-			System.out.println(nodo);
 
 			peso += aux.peso;
 			aux = aux.sigArista;
 		}
+
+		
 
 		return peso;
 	}	

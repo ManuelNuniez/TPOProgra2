@@ -7,6 +7,8 @@ import api.DiccionarioSimpleStrTDA;
 import api.GrafoTDA;
 import api.DiccionarioMultipleTDA;
 
+import algoritmos.*;
+
 /*
 
     ciudades
@@ -52,9 +54,16 @@ public class Ciudades implements CiudadesTDA {
         ultimaProvincia = 1;
 
         ciudades = new GrafoDinamico();
+        ciudades.InicializarGrafo();
+
         nombresCiudades = new DiccionarioSimpleStr();
+        nombresCiudades.InicializarDiccionario();
+
         nombresProvincias = new DiccionarioSimpleStr();
+        nombresProvincias.InicializarDiccionario();
+
         ciudadesProvincias = new DiccionarioMultipleDinamico();
+        ciudadesProvincias.InicializarDiccionario();
     }
     
     @Override
