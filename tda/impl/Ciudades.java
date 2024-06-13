@@ -88,12 +88,12 @@ public class Ciudades implements CiudadesTDA {
         
         DiccionarioSimpleStrTDA ciudadesPorProvincia = new DiccionarioSimpleStr();
         ciudadesPorProvincia.InicializarDiccionario();
-        ConjuntoTDA idciudades = ciudadesProvincias.Recuperar(idProvincia);
+        ConjuntoTDA idCiudades = ciudadesProvincias.Recuperar(idProvincia);
         
-        while(!idciudades.ConjuntoVacio()){
-            int aux=idciudades.Elegir();
-            ciudadesPorProvincia.Agregar(aux, nombresCiudades.Recuperar(aux));
-            idciudades.Sacar(aux);
+        while(!idCiudades.ConjuntoVacio()){
+            int idCiudad = idCiudades.Elegir();
+            idCiudades.Sacar(idCiudad);
+            ciudadesPorProvincia.Agregar(idCiudad, nombresCiudades.Recuperar(idCiudad));
         }
         
         return ciudadesPorProvincia;

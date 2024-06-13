@@ -68,7 +68,7 @@ public class TPO {
         
         CargarDatos(argentina);
 
-        //MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.CiudadesPorProvincia(1)); // falla
+        MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.CiudadesPorProvincia(1));
         //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
         //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
         //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
@@ -78,7 +78,8 @@ public class TPO {
         //argentina.CargarProvincia("Perú"); // preguntar
         //MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
         //System.out.println(argentina.Distancia(4, 10));
-        MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(5, 11));
+        //MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(5, 11));
+        //System.out.println("h");
 
     }
 
