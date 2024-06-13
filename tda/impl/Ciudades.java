@@ -7,8 +7,6 @@ import api.DiccionarioSimpleStrTDA;
 import api.GrafoTDA;
 import api.DiccionarioMultipleTDA;
 
-import algoritmos.*;
-
 /*
 
     ciudades
@@ -84,7 +82,6 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public DiccionarioSimpleStrTDA CiudadesPorProvincia(int idProvincia) {
-        
         DiccionarioSimpleStrTDA ciudadesPorProvincia = new DiccionarioSimpleStr();
         ciudadesPorProvincia.InicializarDiccionario();
         ConjuntoTDA idCiudades = ciudadesProvincias.Recuperar(idProvincia);
