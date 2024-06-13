@@ -1,5 +1,6 @@
 
 import algoritmos.MetodosConjunto;
+import algoritmos.MetodosDiccMultiple;
 import algoritmos.MetodosDiccSimple;
 import api.CiudadesTDA;
 import impl.Ciudades;
@@ -79,9 +80,12 @@ public class TPO {
 
         argentina.Provincias();
         argentina.CiudadesPorProvincia(1); // falla
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3)); // funciona :)
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo()); // funciona :)
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3)); // funciona :)
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesFuertmenteConectadas()); // funciona :)
+        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
+        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
+        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
+        //MetodosDiccMultiple.ImprimirMultipleDiccionario(argentina.CiudadesFuertmenteConectadas());
+        argentina.EliminarCiudades(3);
+        MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
+        System.out.println("h");
     }
 }
