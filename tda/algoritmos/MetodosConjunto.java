@@ -9,11 +9,14 @@ public class MetodosConjunto {
         ConjuntoTDA c = new ConjuntoDinamico();
         c.InicializarConjunto();
         c=original;
+
         while (!c.ConjuntoVacio()) {
             int x=c.Elegir();
-            System.out.print(" " + x);
+            System.out.print(x + " ");
             c.Sacar(x);
         }
+
+        System.out.println();
     }
 
     public static ConjuntoTDA CopiarConjunto(ConjuntoTDA original) {
