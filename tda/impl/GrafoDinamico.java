@@ -1,7 +1,10 @@
 package impl;
 
+import api.ColaPrioridadTDA;
 import api.ConjuntoTDA;
+import api.DiccionarioSimpleTDA;
 import api.GrafoTDA;
+import algoritmos.MetodosConjunto;
 
 public class GrafoDinamico implements GrafoTDA {
 	private class Arista {
@@ -117,4 +120,21 @@ public class GrafoDinamico implements GrafoTDA {
 
 		return CNodos;
 	}
+
+	public int PesoEntre(int idOrigen, int idDestino) {
+		Vertice nodo = Vertice2Nodo(idOrigen);
+		Arista aux = nodo.arista;
+		int peso = 0;
+
+	
+		while (aux != null && aux.nodoDestino.nodo != idDestino) {
+			
+			System.out.println(nodo);
+
+			peso += aux.peso;
+			aux = aux.sigArista;
+		}
+
+		return peso;
+	}	
 }

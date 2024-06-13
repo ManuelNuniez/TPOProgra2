@@ -204,9 +204,8 @@ public class Ciudades implements CiudadesTDA {
 
     @Override
     public int Distancia(int idOrigen, int idDestino) {
-        return 0;
+        return ciudades.PesoEntre(idOrigen, idDestino);
     }
-
 
     @Override
     public DiccionarioSimpleStrTDA Provincias() {

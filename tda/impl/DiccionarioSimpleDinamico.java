@@ -4,62 +4,66 @@ import api.ConjuntoTDA;
 import api.DiccionarioSimpleTDA;
 
 public class DiccionarioSimpleDinamico implements DiccionarioSimpleTDA {
-    NodoDS first;
-
-    @Override
-    public void Agregar(int clave, int valor) {
-        NodoDS newNode = new NodoDS();
-
-        newNode.key = clave;
-        newNode.value = valor;
-        
-        if (first != null) {
-            newNode.next = first;
-        }
-
-        first = newNode;
-    }   
-
-    @Override
-    public ConjuntoTDA Claves() {
-        return null;
+    private class NodoClave {
+        int clave;
+        int valor;
+        NodoClave sigClave;
     }
 
-    @Override
-    public void Eliminar(int clave) {
-        if (first == null) return;
-        
-        NodoDS curr = first;
+    private NodoClave origen;
 
-        while (curr != null) {
-            if (curr.key == clave) {
-                
-            }
-
-            curr = curr.next;
-        }
-    }
-
-    @Override
-    public void ImprimirDiccionario() {
-        if (first == null) return;
-
-        NodoDS curr = first;
-        while (curr != null) {
-            System.out.println("[" + curr.key + ": " + curr.value + "]");
-
-            curr = curr.next;
-        }
-    }
-
-    @Override
     public void InicializarDiccionario() {
-        
+        origen = null;
+    }
+    
+    public void Agregar(int clave,int valor) {
+        NodoClave nc = Clave2NodoClave(clave);
+        if (nc == null) {
+            nc = new NodoClave();
+            nc.clave = clave;
+            nc.sigClave = origen;
+            origen = nc;
+        }
+        nc.valor = valor;
     }
 
-    @Override
+    private NodoClave Clave2NodoClave(int clave) {
+        NodoClave aux = origen;
+        while (aux!= null && aux.clave!=clave) {
+            aux=aux.sigClave;
+        }
+        return aux;
+    }
+    
+    public void Eliminar(int clave) {
+        if(origen!=null) {
+            if (origen.clave == clave) {
+                origen = origen.sigClave;
+            } else {
+                NodoClave aux = origen;
+                while (aux.sigClave!=null && aux.sigClave.clave != clave) {
+                    aux=aux.sigClave;
+                }
+                if (aux.sigClave!=null) {
+                    aux.sigClave=aux.sigClave.sigClave;
+                }
+            }
+        }
+    }
+    
     public int Recuperar(int clave) {
-        return 0;
+        NodoClave nc = Clave2NodoClave(clave);
+        return nc.valor;
     }
-
+    
+    public ConjuntoTDA Claves() {
+        ConjuntoTDA c = new ConjuntoDinamico();
+        c.InicializarConjunto();
+        NodoClave aux = origen;
+        while (aux!=null) {
+            c.Agregar(aux.clave);
+            aux=aux.sigClave;
+        }
+        return c;
+    }
 }

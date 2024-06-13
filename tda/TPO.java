@@ -5,6 +5,7 @@ import algoritmos.MetodosDiccSimple;
 import api.CiudadesTDA;
 import impl.Ciudades;
 
+import algoritmos.*;
 import api.*;
 import impl.*;
 
@@ -21,71 +22,28 @@ public class TPO {
         ciudades.CargarCiudad("Caba", 1); // id 3
         ciudades.CargarCiudad("Tandil", 1); // id 4
 
-        ciudades.CargarCiudad("Ciudad de Cordoba", 2); // id 5
-        ciudades.CargarCiudad("Rio Cuarto", 2); // id 6
-        ciudades.CargarCiudad("Villa Carlos Paz", 2); // id 7
-
-        ciudades.CargarCiudad("Cafayate", 3); // id 8
-
-        ciudades.CargarCiudad("Rawson", 4); // id 9
-        ciudades.CargarCiudad("Trelew", 4); // id 10
-        ciudades.CargarCiudad("Puerto Madryn", 4); // id 11
-
-
-        ciudades.UnirCiudades(3, 2, 400);
-        ciudades.UnirCiudades(3, 1, 60);
-        ciudades.UnirCiudades(3, 4, 350);
-        ciudades.UnirCiudades(3, 5, 1300);
-
-        ciudades.UnirCiudades(2, 3, 500);
-        ciudades.UnirCiudades(2, 5, 1800);
-
-        ciudades.UnirCiudades(1, 5, 1500);
-        ciudades.UnirCiudades(1, 9, 2700);
-
-        ciudades.UnirCiudades(4, 3, 480);
-
-        ciudades.UnirCiudades(5, 9, 2800);
-        ciudades.UnirCiudades(5, 6, 200);
-
-        ciudades.UnirCiudades(6, 11, 1150);
-
-        ciudades.UnirCiudades(7, 5, 40);
-        ciudades.UnirCiudades(7, 6, 250);
-        ciudades.UnirCiudades(7, 10, 1400);
-
-        ciudades.UnirCiudades(9, 7, 1200);
-        ciudades.UnirCiudades(9, 8, 2200);
-        ciudades.UnirCiudades(9, 10, 20);
-
-        // ciudades.UnirCiudades(1, 2, 722);
-        // ciudades.UnirCiudades(2, 3, 1530);
-        // ciudades.UnirCiudades(3, 1, 1578);
-        // ciudades.UnirCiudades(1, 3, 1578);
+        ciudades.UnirCiudades(1, 2, 10);
     }
 
     public static void main(String[] args) {
-        CiudadesTDA argentina = new Ciudades();
-        argentina.Inicializar();
+        // CiudadesTDA argentina = new Ciudades();
+        // argentina.Inicializar();
         
-        CargarDatos(argentina);
-        //MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesFuertmenteConectadas());
-        //MetodosConjunto.ImprimirConjunto()
+        // CargarDatos(argentina);
+        // int asd = argentina.Distancia(1, 2);
+        // System.out.println(asd);
 
-        GrafoTDA g = new GrafoDinamico();
+        DiccionarioSimpleStrTDA dicc = new DiccionarioSimpleStr();
+        dicc.InicializarDiccionario();
 
-        g.AgregarVertice(1);
-        // g.AgregarVertice(2);
-        // g.AgregarVertice(3);
+        dicc.Agregar(1, "sdd");
+        dicc.Agregar(2, "asdddd");
 
-        argentina.Provincias();
-        argentina.CiudadesPorProvincia(1); // falla
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
-        //MetodosDiccMultiple.ImprimirMultipleDiccionario(argentina.CiudadesFuertmenteConectadas());
-        argentina.EliminarCiudades(3);
-        MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
-        System.out.println("h");
+        ConjuntoTDA conj = dicc.Claves();
+        algoritmos.MetodosConjunto.ImprimirConjunto(conj);
+
+
+        // System.out.println(dicc.Recuperar(1));
+        // System.out.println(dicc.Recuperar(2));
     }
 }

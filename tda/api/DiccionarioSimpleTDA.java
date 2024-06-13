@@ -6,6 +6,4 @@ public interface DiccionarioSimpleTDA {
     void Eliminar(int clave);
     int Recuperar(int clave);
     ConjuntoTDA Claves();
-
-    void ImprimirDiccionario();
 }
