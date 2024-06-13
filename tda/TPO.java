@@ -19,7 +19,7 @@ public class TPO {
 
         ciudades.CargarCiudad("La Plata", 1); // id 1
         ciudades.CargarCiudad("Mar del Plata", 1); // id 2
-        ciudades.CargarCiudad("Caba", 1); // id 3
+        ciudades.CargarCiudad("C.A.B.A.", 1); // id 3
         ciudades.CargarCiudad("Tandil", 1); // id 4
 
         ciudades.CargarCiudad("Ciudad de Cordoba", 2); // id 5
@@ -68,18 +68,41 @@ public class TPO {
         
         CargarDatos(argentina);
 
+        System.out.println();
+        System.out.println("Ciudades en " + argentina.Provincias().Recuperar(1) + ":");
         MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.CiudadesPorProvincia(1));
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
-        //MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
-        //MetodosDiccMultiple.ImprimirMultipleDiccionario(argentina.CiudadesFuertmenteConectadas());
-        //argentina.EliminarCiudades(3);
-        //argentina.CargarCiudad("hola", 3);
-        //argentina.CargarProvincia("Perú"); // preguntar
-        //MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
-        //System.out.println(argentina.Distancia(4, 10));
-        //MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(5, 11));
-        //System.out.println("h");
+        
+        System.out.println();
+        System.out.println("Ciudades vecinas a " + argentina.CiudadesPorProvincia(1).Recuperar(3) + ":");
+        MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
+
+        System.out.println();
+        System.out.println("Ciudades extremo:");
+        MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
+
+        System.out.println();
+        System.out.println("Ciudades predecesoras a " + argentina.CiudadesPorProvincia(1).Recuperar(3) + ":");
+        MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
+
+        System.out.println();
+        System.out.println("Ciudades fuertemente conectadas:");
+        MetodosDiccMultiple.ImprimirMultipleDiccionario(argentina.CiudadesFuertmenteConectadas());
+
+        argentina.EliminarCiudades(3);
+        argentina.CargarProvincia("Río Negro");
+        argentina.CargarCiudad("Bariloche", 5);
+
+        System.out.println();
+        System.out.println("Provincias:");
+        MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
+
+        System.out.println();
+        System.out.printf("Distancia entre %s y %s:\n", argentina.CiudadesPorProvincia(1).Recuperar(4), argentina.CiudadesPorProvincia(4).Recuperar(10));
+        System.out.println(argentina.Distancia(4, 10) + " km");
+        
+        System.out.println();
+        System.out.printf("Ciudades puente entre %s y %s:\n", argentina.CiudadesPorProvincia(4).Recuperar(9), argentina.CiudadesPorProvincia(2).Recuperar(5));
+        MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(9, 5));
 
     }
 
