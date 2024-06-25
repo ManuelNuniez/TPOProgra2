@@ -97,12 +97,15 @@ public class TPO {
         MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.Provincias());
 
         System.out.println();
-        System.out.printf("Distancia entre %s y %s:\n", argentina.CiudadesPorProvincia(1).Recuperar(4), argentina.CiudadesPorProvincia(4).Recuperar(10));
-        System.out.println(argentina.Distancia(4, 10) + " km");
+        System.out.printf("Distancia entre %s y %s:\n", argentina.CiudadesPorProvincia(1).Recuperar(2), argentina.CiudadesPorProvincia(4).Recuperar(10));
+        int distancia= argentina.Distancia(2, 10);
+        System.out.println(distancia + " km");
         
         System.out.println();
         System.out.printf("Ciudades puente entre %s y %s:\n", argentina.CiudadesPorProvincia(4).Recuperar(9), argentina.CiudadesPorProvincia(2).Recuperar(5));
         MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(9, 5));
+
+
 
     }
 

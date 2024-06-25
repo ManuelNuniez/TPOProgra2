@@ -4,66 +4,81 @@ import api.ConjuntoTDA;
 import api.DiccionarioSimpleTDA;
 
 public class DiccionarioSimpleDinamico implements DiccionarioSimpleTDA {
-    private class NodoClave {
-        int clave;
-        int valor;
-        NodoClave sigClave;
-    }
-
-    private NodoClave origen;
-
+    NodoDiccionario Primero;
+    
+    @Override
     public void InicializarDiccionario() {
-        origen = null;
-    }
-    
-    public void Agregar(int clave,int valor) {
-        NodoClave nc = Clave2NodoClave(clave);
-        if (nc == null) {
-            nc = new NodoClave();
-            nc.clave = clave;
-            nc.sigClave = origen;
-            origen = nc;
-        }
-        nc.valor = valor;
+        Primero=null;
     }
 
-    private NodoClave Clave2NodoClave(int clave) {
-        NodoClave aux = origen;
-        while (aux!= null && aux.clave!=clave) {
-            aux=aux.sigClave;
-        }
-        return aux;
-    }
-    
-    public void Eliminar(int clave) {
-        if(origen!=null) {
-            if (origen.clave == clave) {
-                origen = origen.sigClave;
-            } else {
-                NodoClave aux = origen;
-                while (aux.sigClave!=null && aux.sigClave.clave != clave) {
-                    aux=aux.sigClave;
-                }
-                if (aux.sigClave!=null) {
-                    aux.sigClave=aux.sigClave.sigClave;
-                }
+    @Override
+    public void Agregar(int clave, int valor) {
+        NodoDiccionario aux= new NodoDiccionario();
+        aux.ValorN=valor;
+        aux.ClaveN=clave;
+
+        if (Primero==null) {
+            Primero=aux;
+            
+        }else if(!Claves().Pertenece(clave)){
+            
+            aux.sig=Primero;
+            Primero=aux;
+        }else if (Claves().Pertenece(clave)) {
+            aux=Primero;
+
+            while (aux.ClaveN!=clave) {
+                aux=aux.sig;
             }
+            aux.ValorN=valor;
+            
         }
     }
-    
+
+    @Override
+    public void Eliminar(int clave) {
+
+        if (Claves().Pertenece(clave)) {
+            if (Primero.ClaveN==clave) {
+                Primero=Primero.sig;
+            }else{
+                NodoDiccionario actual = Primero.sig;
+                NodoDiccionario anterior =Primero;
+                while (actual.ClaveN!=clave) {
+                    anterior=actual;
+                    actual=actual.sig;
+                }
+                anterior.sig=actual.sig;
+            }
+
+        }
+    }
+
+    @Override
     public int Recuperar(int clave) {
-        NodoClave nc = Clave2NodoClave(clave);
-        return nc.valor;
-    }
-    
-    public ConjuntoTDA Claves() {
-        ConjuntoTDA c = new ConjuntoDinamico();
-        c.InicializarConjunto();
-        NodoClave aux = origen;
-        while (aux!=null) {
-            c.Agregar(aux.clave);
-            aux=aux.sigClave;
+        NodoDiccionario aux =Primero;
+        while (aux.ClaveN!=clave && aux!=null) {
+            aux=aux.sig;    
         }
-        return c;
+        if (aux==null) {
+            return -1;
+        }
+
+        return aux.ValorN;
     }
+
+    @Override
+    public ConjuntoTDA Claves() { 
+        ConjuntoTDA claves= new ConjuntoDinamico();
+        claves.InicializarConjunto();
+        NodoDiccionario aux=Primero;
+
+        while(aux!=null){
+            claves.Agregar(aux.ClaveN);
+            aux=aux.sig;
+        }
+        return claves;
+    }
+
+
 }

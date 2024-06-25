@@ -1,10 +1,12 @@
 package impl;
 
 import api.DiccionarioSimpleTDA;
+import algoritmos.MetodosDiccSimple;
 import api.CiudadesTDA;
 import api.ConjuntoTDA;
 import api.DiccionarioSimpleStrTDA;
 import api.GrafoTDA;
+import impl.Grafos.Grafo;
 import api.DiccionarioMultipleTDA;
 
 /*
@@ -51,8 +53,8 @@ public class Ciudades implements CiudadesTDA {
         ultimaCiudad = 1;
         ultimaProvincia = 1;
 
-        ciudades = new GrafoDinamico();
-        ciudades.InicializarGrafo();
+        ciudades = new Grafo();
+        ciudades.inicializarGrafo();
 
         nombresCiudades = new DiccionarioSimpleStr();
         nombresCiudades.InicializarDiccionario();
@@ -220,10 +222,6 @@ public class Ciudades implements CiudadesTDA {
         return ciudadesVecinas;
     }
 
-    @Override
-    public int Distancia(int idOrigen, int idDestino) {
-        return ciudades.PesoEntre(idOrigen, idDestino);
-    }
 
     @Override
     public DiccionarioSimpleStrTDA Provincias() {
@@ -234,6 +232,7 @@ public class Ciudades implements CiudadesTDA {
     public void UnirCiudades(int idOrigen, int idDestino, int distancia) {
         ciudades.AgregarArista(idOrigen, idDestino, distancia);
     }
+
 
     @Override
     public void EliminarCiudades(int idCiudad) {
@@ -252,4 +251,15 @@ public class Ciudades implements CiudadesTDA {
             }
         }
     }
+
+    public int Distancia(int origen, int destino){
+
+        DiccionarioSimpleTDA caminosMasCortos = ciudades.CaminosMenorPeso(origen);
+        //MetodosDiccSimple.ImprimirSimpleDiccionario(caminosMasCortos);
+        //return 1;
+        return caminosMasCortos.Recuperar(destino);
+
+
+    }
 }
+
