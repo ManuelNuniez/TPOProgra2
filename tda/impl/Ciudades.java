@@ -45,7 +45,7 @@ public class Ciudades implements CiudadesTDA {
 
     GrafoTDA ciudades;
     DiccionarioSimpleStrTDA nombresCiudades; // claves: id ciudades / valores: nombres ciudades
-    DiccionarioSimpleStrTDA nombresProvincias; // claves: id provincias / valroes: nombres provincias
+    DiccionarioSimpleStrTDA nombresProvincias; // claves: id provincias / valores: nombres provincias
     DiccionarioMultipleTDA ciudadesProvincias; // claves: id provincias / valores: id ciudades
     
     @Override
@@ -98,7 +98,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public ConjuntoTDA CiudadesExtremo() {
+    public ConjuntoTDA CiudadesExtremo() { // no parta ninguna ruta de ellas, solo le lleguen
         ConjuntoTDA conjuntoCiudades = new ConjuntoDinamico();
         ConjuntoTDA conjuntoCiudadesComparar = new ConjuntoDinamico();
         ConjuntoTDA ciudadesExtremo = new ConjuntoDinamico();
@@ -133,7 +133,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioMultipleTDA CiudadesFuertmenteConectadas() {
+    public DiccionarioMultipleTDA CiudadesFuertmenteConectadas() { // rutas ida y vuelta entre
         ConjuntoTDA conjuntoCiudades = new ConjuntoDinamico();
         ConjuntoTDA conjuntoCiudadesComparar = new ConjuntoDinamico();
         DiccionarioMultipleTDA ciudadesFuertementeConectadas = new DiccionarioMultipleDinamico();
@@ -161,7 +161,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public ConjuntoTDA CiudadesPredecesoras(int idCiudad) {
+    public ConjuntoTDA CiudadesPredecesoras(int idCiudad) { // ciudades desde las que podemos llegar
         ConjuntoTDA ciudadesPredecesoras = new ConjuntoDinamico();
         ConjuntoTDA ciudadesComparar = ciudades.Vertices();
 
@@ -187,7 +187,7 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
-    public DiccionarioSimpleTDA CiudadesPuente(int idOrigen, int idDestino) {
+    public DiccionarioSimpleTDA CiudadesPuente(int idOrigen, int idDestino) { // ruta ab bc
         DiccionarioSimpleDinamico ciudadesPuente = new DiccionarioSimpleDinamico();
         ConjuntoTDA ciudadesComparar = ciudades.Vertices();
 
@@ -207,7 +207,7 @@ public class Ciudades implements CiudadesTDA {
     
 
     @Override
-    public ConjuntoTDA CiudadesVecinas(int idCiudad) {
+    public ConjuntoTDA CiudadesVecinas(int idCiudad) { // conectada por un sola ruta
         ConjuntoTDA ciudadesVecinas = new ConjuntoDinamico();
         ConjuntoTDA ciudadesComparar = new ConjuntoDinamico();
 

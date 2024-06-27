@@ -11,11 +11,11 @@ public interface CiudadesTDA {
 	public DiccionarioSimpleStrTDA CiudadesPorProvincia(int idProvincia);
 	public void EliminarCiudades(int idCiudad);
 	
-	public ConjuntoTDA CiudadesVecinas(int idCiudad); 
-	public DiccionarioSimpleTDA CiudadesPuente(int idOrigen, int idDestino);
-	public ConjuntoTDA CiudadesPredecesoras(int idCiudad); 
-	public ConjuntoTDA CiudadesExtremo(); 
-	public DiccionarioMultipleTDA CiudadesFuertmenteConectadas(); 
+	public ConjuntoTDA CiudadesVecinas(int idCiudad); // conectada por un sola ruta
+	public DiccionarioSimpleTDA CiudadesPuente(int idOrigen, int idDestino); // ruta ab bc
+	public ConjuntoTDA CiudadesPredecesoras(int idCiudad); // ciudades desde las que podemos llegar
+	public ConjuntoTDA CiudadesExtremo(); // no parta ninguna ruta de ellas, solo le lleguen
+	public DiccionarioMultipleTDA CiudadesFuertmenteConectadas(); // rutas ida y vuelta entre
 
 	public void UnirCiudades(int idOrigen, int idDestino, int distancia);
 
