@@ -1,7 +1,6 @@
 import algoritmos.MetodosConjunto;
 import algoritmos.MetodosDiccMultiple;
 import algoritmos.MetodosDiccSimple;
-import api.CiudadesTDA;
 import impl.Ciudades;
 
 import api.*;
@@ -71,22 +70,64 @@ public class TPO {
         System.out.println();
         System.out.println("Ciudades en " + argentina.Provincias().Recuperar(1) + ":");
         MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.CiudadesPorProvincia(1));
+
+        System.out.println();
+        System.out.println("Ciudades:");
+        MetodosDiccSimple.imprimirDiccionarioSimpleString(argentina.nombresCiudades());
         
         System.out.println();
-        System.out.println("Ciudades vecinas a " + argentina.CiudadesPorProvincia(1).Recuperar(3) + ":");
-        MetodosConjunto.ImprimirConjunto(argentina.CiudadesVecinas(3));
+        System.out.println("Ciudades vecinas a " + argentina.nombresCiudades().Recuperar(3) + ":");
+        ConjuntoTDA ciudadesVecinas = argentina.CiudadesVecinas(3);
+
+        while (!ciudadesVecinas.ConjuntoVacio()) {
+            int aux = ciudadesVecinas.Elegir();
+            ciudadesVecinas.Sacar(aux);
+
+            System.out.println(argentina.nombresCiudades().Recuperar(aux));
+        }
 
         System.out.println();
         System.out.println("Ciudades extremo:");
-        MetodosConjunto.ImprimirConjunto(argentina.CiudadesExtremo());
+        ConjuntoTDA ciudadesExtremo = argentina.CiudadesExtremo();
+
+        while (!ciudadesExtremo.ConjuntoVacio()) {
+            int aux = ciudadesExtremo.Elegir();
+            ciudadesExtremo.Sacar(aux);
+
+            System.out.println(argentina.nombresCiudades().Recuperar(aux));
+        }
 
         System.out.println();
-        System.out.println("Ciudades predecesoras a " + argentina.CiudadesPorProvincia(1).Recuperar(3) + ":");
-        MetodosConjunto.ImprimirConjunto(argentina.CiudadesPredecesoras(3));
+        System.out.println("Ciudades predecesoras a " + argentina.nombresCiudades().Recuperar(3) + ":");
+        ConjuntoTDA ciudadesPredecesoras = argentina.CiudadesPredecesoras(3);
+
+        while (!ciudadesPredecesoras.ConjuntoVacio()) {
+            int aux = ciudadesPredecesoras.Elegir();
+            ciudadesPredecesoras.Sacar(aux);
+
+            System.out.println(argentina.nombresCiudades().Recuperar(aux));
+        }
 
         System.out.println();
-        System.out.println("Ciudades fuertemente conectadas:");
-        MetodosDiccMultiple.ImprimirMultipleDiccionario(argentina.CiudadesFuertmenteConectadas());
+        System.out.print("Ciudades fuertemente conectadas:");
+        ConjuntoTDA clavesFuertementeConectadas = argentina.CiudadesFuertmenteConectadas().Claves();
+
+        while (!clavesFuertementeConectadas.ConjuntoVacio()) {
+            int aux = clavesFuertementeConectadas.Elegir();
+            clavesFuertementeConectadas.Sacar(aux);
+            ConjuntoTDA valores = argentina.CiudadesFuertmenteConectadas().Recuperar(aux);
+
+            System.out.print("\n" + argentina.nombresCiudades().Recuperar(aux) + ": ");
+
+            while (!valores.ConjuntoVacio()) {
+                int aux2 = valores.Elegir();
+                valores.Sacar(aux2);
+
+                System.out.print(argentina.nombresCiudades().Recuperar(aux2) + " ");
+            }
+        }
+
+        System.out.println();
 
         argentina.EliminarCiudades(3);
         argentina.CargarProvincia("Río Negro");
@@ -102,10 +143,16 @@ public class TPO {
         System.out.println(distancia + " km");
         
         System.out.println();
-        System.out.printf("Ciudades puente entre %s y %s:\n", argentina.CiudadesPorProvincia(4).Recuperar(9), argentina.CiudadesPorProvincia(2).Recuperar(5));
-        MetodosDiccSimple.ImprimirSimpleDiccionario(argentina.CiudadesPuente(9, 5));
+        System.out.printf("Ciudades puente entre %s y %s:\n", argentina.nombresCiudades().Recuperar(9), argentina.nombresCiudades().Recuperar(5));
+        DiccionarioSimpleTDA ciudadesPuente = argentina.CiudadesPuente(9, 5);
+        ConjuntoTDA clavesPuente = argentina.CiudadesPuente(9, 5).Claves();
 
+        while (!clavesPuente.ConjuntoVacio()) {
+            int aux = clavesPuente.Elegir();
+            clavesPuente.Sacar(aux);
 
+            System.out.println(argentina.nombresCiudades().Recuperar(aux) + ": " + ciudadesPuente.Recuperar(aux) + " km");
+        }
 
     }
 
