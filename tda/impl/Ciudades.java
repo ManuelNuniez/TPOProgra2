@@ -260,8 +260,6 @@ public class Ciudades implements CiudadesTDA {
     public int Distancia(int origen, int destino){
 
         DiccionarioSimpleTDA caminosMasCortos = ciudades.CaminosMenorPeso(origen);
-        //MetodosDiccSimple.ImprimirSimpleDiccionario(caminosMasCortos);
-        //return 1;
         return caminosMasCortos.Recuperar(destino);
 
 
