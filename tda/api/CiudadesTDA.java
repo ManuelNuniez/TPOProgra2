@@ -5,7 +5,8 @@ public interface CiudadesTDA {
 	public void Inicializar();
 
 	public void CargarProvincia(String nombreProvincia);
-	public DiccionarioSimpleStrTDA Provincias(); 
+	public DiccionarioSimpleStrTDA Provincias();
+	public DiccionarioSimpleStrTDA nombresCiudades(); 
 	public void CargarCiudad(String nombreCiudad, int idProvincia);
 	public DiccionarioSimpleStrTDA CiudadesPorProvincia(int idProvincia);
 	public void EliminarCiudades(int idCiudad);

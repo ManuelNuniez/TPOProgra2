@@ -182,6 +182,11 @@ public class Ciudades implements CiudadesTDA {
     }
 
     @Override
+    public DiccionarioSimpleStrTDA nombresCiudades() {
+        return nombresCiudades;
+    }
+
+    @Override
     public DiccionarioSimpleTDA CiudadesPuente(int idOrigen, int idDestino) {
         DiccionarioSimpleDinamico ciudadesPuente = new DiccionarioSimpleDinamico();
         ConjuntoTDA ciudadesComparar = ciudades.Vertices();
