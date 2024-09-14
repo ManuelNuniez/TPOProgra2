@@ -1,8 +1,8 @@
 package impl;
 
-import api.ArbolBBTDA;
+import api.Huffman.ArbolBBHuffman;
 
-public class ArbolBB implements ArbolBBTDA<T> {
+public class ArbolBB implements ArbolBBHuffman {
     NodoABB raiz;
 
     @Override
@@ -11,12 +11,12 @@ public class ArbolBB implements ArbolBBTDA<T> {
     }
 
     @Override
-    public ArbolBBTDA HijoIzq() {
+    public ArbolBBHuffman HijoIzq() {
         return raiz.HijoIzq;
     }
 
     @Override
-    public ArbolBBTDA HijoDer() {
+    public ArbolBBHuffman HijoDer() {
         return raiz.HijoDer;
     }
 
@@ -72,7 +72,7 @@ public class ArbolBB implements ArbolBBTDA<T> {
         }
     }
 
-    private int mayor(ArbolBBTDA a){
+    private int mayor(ArbolBBHuffman a){
         if (a.HijoDer().ArbolVacio())
             return a.Raiz();
         else
@@ -80,7 +80,7 @@ public class ArbolBB implements ArbolBBTDA<T> {
     
     }
 
-    private int menor(ArbolBBTDA a){
+    private int menor(ArbolBBHuffman a){
         if (a.HijoIzq().ArbolVacio())
             return a.Raiz();
         else

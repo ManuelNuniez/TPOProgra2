@@ -1,11 +1,12 @@
 package impl.Huffman;
-import api.ArbolBBTDA;
-import api.HuffmanHeap;
+import api.Huffman.ArbolBBHuffman;
+import api.Huffman.HuffmanPriorityQueue;
+import api.Huffman.Symbol;
 
 public class HuffmanAlgorithm {
 
-    HuffmanHeap inputQueue;
-    ArbolBBTDA outputTree;
+    HuffmanPriorityQueue inputQueue;
+    ArbolBBHuffman outputTree;
 
     // Constructor
     public HuffmanAlgorithm(Symbol[] alphabet){

@@ -1,20 +1,20 @@
 package impl.Huffman;
-import api.HuffmanHeapTDA;
+import api.Huffman.HuffmanHeap;
+import api.Huffman.Symbol;
 
 
-public class HuffmanHeap implements HuffmanHeapTDA {
-
+public class HuffmanPriorityQueue implements HuffmanHeap {
     int i;
     Symbol[] chars;
     int capacity;
 
-    public HuffmanHeap(){
+    public HuffmanPriorityQueue() {
         capacity = 10;
         chars = new Symbol[capacity];
         i = 0;
     }
 
-    private void VectorReset(){
+    private void VectorReset() {
         Symbol[] aux = new Symbol[capacity *10];
         for (int j = 0; j < chars.length; j++) {
             aux[j] = chars[j];
@@ -24,8 +24,7 @@ public class HuffmanHeap implements HuffmanHeapTDA {
     }
 
     @Override
-    public void AddH(Symbol value) {
-
+    public void AddValue(Symbol value) {
         if (capacity == i) {
             VectorReset();
         }
@@ -33,22 +32,19 @@ public class HuffmanHeap implements HuffmanHeapTDA {
         chars[i] = value;
         i++;
 
-        int newPos=i-1;
-        int padrePos= (newPos - 1)/2;
+        int newPos = i-1;
+        int padrePos = (newPos - 1)/2;
 
         while (chars[padrePos].probability > chars[newPos].probability) {
             Symbol aux = chars[padrePos];
             chars[padrePos] = chars[newPos];
             chars[newPos] = aux;
 
-            newPos=padrePos;
-            padrePos=(newPos - 1)/2;
+            newPos = padrePos;
+            padrePos = (newPos - 1)/2;
         }
     }
 
-    
-
-    @Override
     public void SubtractH() {
         i--;
         chars[0] = chars[i];
@@ -79,15 +75,21 @@ public class HuffmanHeap implements HuffmanHeapTDA {
         }
     }
     
-
     @Override
     public boolean IsEmpty() {
         return (i == 0);
     }
 
     @Override
-    public char GetCode() {
-        return chars[0].character;
+    public String GetCode(char character) {
+        // TODO: 
+        return "00000";
+    }
+
+    @Override
+    public Symbol Pop() {
+        // TODO:         
+        return new Symbol();
     }
 }
 
