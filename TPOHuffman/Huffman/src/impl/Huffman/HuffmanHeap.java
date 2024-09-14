@@ -1,4 +1,6 @@
 package impl.Huffman;
+import api.HuffmanHeapTDA;
+
 
 public class HuffmanHeap implements HuffmanHeapTDA {
 
@@ -34,7 +36,7 @@ public class HuffmanHeap implements HuffmanHeapTDA {
         int newPos=i-1;
         int padrePos= (newPos - 1)/2;
 
-        while (chars[padrePos].probabilty > chars[newPos].probabilty) {
+        while (chars[padrePos].probability > chars[newPos].probability) {
             Symbol aux = chars[padrePos];
             chars[padrePos] = chars[newPos];
             chars[newPos] = aux;
@@ -55,8 +57,8 @@ public class HuffmanHeap implements HuffmanHeapTDA {
         int rightSon= 2;
         int leftSon= 1;
 
-        while (chars[father].probabilty > chars[leftSon].probabilty || chars[father].probabilty > chars[rightSon].probabilty) {
-            if (chars[leftSon].probabilty > chars[rightSon].probabilty) {
+        while (chars[father].probability > chars[leftSon].probability || chars[father].probability > chars[rightSon].probability) {
+            if (chars[leftSon].probability > chars[rightSon].probability) {
                 Symbol aux = chars[father];
                 chars[father] = chars[leftSon];
                 chars[leftSon] = aux;
@@ -84,8 +86,8 @@ public class HuffmanHeap implements HuffmanHeapTDA {
     }
 
     @Override
-    public Symbol GetValue() {
-        return chars[0];
+    public char GetCode() {
+        return chars[0].character;
     }
 }
 
