@@ -4,8 +4,8 @@ import api.Huffman.HuffmanHeap;
 
 public class HuffmanPriorityQueue implements HuffmanHeap {
     public static class HuffmanNode {
-        char character;
-        double weight;
+        private char character;
+        private double weight;
 
         public HuffmanNode(char character, double weight) {
             this.character = character;
@@ -26,7 +26,7 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
 	}
 
     int size;
-    int capacity = 127; //127
+    int capacity = 127;
     HuffmanNode[] chars;
 
     public HuffmanPriorityQueue() {
@@ -91,16 +91,6 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
 
     @Override
     public HuffmanNode Pop() {
-        // for (HuffmanNode n : chars) {
-        //     if (n == null) {
-        //         System.out.print("_");
-        //         continue;
-        //     }
-        //     System.out.print(n.character);
-        // }
-        // System.out.println();
-        // System.out.println("=====================");
-
         if (IsEmpty()) {
             throw new IllegalStateException("El heap está vacio");
         }
@@ -112,7 +102,7 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
         size--;
     
         heapify(0);
-    
+
         return root;
     }
     

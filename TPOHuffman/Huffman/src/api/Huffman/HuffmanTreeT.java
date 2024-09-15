@@ -9,10 +9,10 @@ public interface HuffmanTreeT {
     HuffmanTreeT HijoDer();
     boolean ArbolVacio();
     
-    void AgregarElem(HuffmanNode node);
+    void AgregarElem(HuffmanNode node1, HuffmanNode node2);
 
     char ObtenerCaracter();
     double ObtenerProbabilidad();
 
-    void ImprimirArbol(HuffmanTreeT root);
+    void ImprimirArbol(HuffmanTreeT root, String prepend);
 }

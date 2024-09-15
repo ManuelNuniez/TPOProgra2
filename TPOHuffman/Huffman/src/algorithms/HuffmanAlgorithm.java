@@ -24,8 +24,7 @@ public class HuffmanAlgorithm {
             HuffmanNode x = inputQueue.Pop();
             HuffmanNode y = inputQueue.Pop();
 
-            outputTree.AgregarElem(x);
-            outputTree.AgregarElem(y);
+            outputTree.AgregarElem(x, y);
 
             double newWeight = x.getWeight() + y.getWeight();
             inputQueue.AddValue(newWeight);
@@ -33,6 +32,6 @@ public class HuffmanAlgorithm {
     }
 
     public void PrintCodes() {
-        outputTree.ImprimirArbol(outputTree);
+        outputTree.ImprimirArbol(outputTree, "");
     }
 }
