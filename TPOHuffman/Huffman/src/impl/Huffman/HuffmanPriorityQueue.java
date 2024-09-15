@@ -4,18 +4,15 @@ import api.Huffman.HuffmanHeap;
 
 public class HuffmanPriorityQueue implements HuffmanHeap {
     public static class HuffmanNode {
-		HuffmanNode left;
-		HuffmanNode right;
-
         char character;
         double weight;
 
-        HuffmanNode(char character, double weight) {
+        public HuffmanNode(char character, double weight) {
             this.character = character;
             this.weight = weight;
         }
 
-        HuffmanNode(double peso) {
+        public HuffmanNode(double peso) {
             this.weight = peso;
         }
 
@@ -29,7 +26,7 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
 	}
 
     int size;
-    int capacity = 127;
+    int capacity = 127; //127
     HuffmanNode[] chars;
 
     public HuffmanPriorityQueue() {
@@ -81,39 +78,9 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
         addNode(newNode);
     }
 
-    public void SubtractH() {
-        size--;
-        chars[0] = chars[size];
-
-        int father=0;
-        int rightSon= 2;
-        int leftSon= 1;
-
-        while (chars[father].weight > chars[leftSon].weight || chars[father].weight > chars[rightSon].weight) {
-            if (chars[leftSon].weight > chars[rightSon].weight) {
-                HuffmanNode aux = chars[father];
-                chars[father] = chars[leftSon];
-                chars[leftSon] = aux;
-
-                father = leftSon;
-                leftSon = 2*father +1;
-                rightSon = 2*father +2;
-
-            } else {
-                HuffmanNode aux = chars[father];
-                chars[father] = chars[rightSon];
-                chars[rightSon] = aux;
-                
-                father = rightSon;
-                leftSon = 2*father + 1;
-                rightSon = 2*father + 2;
-            }
-        }
-    }
-    
     @Override
     public boolean IsEmpty() {
-        return (size == 0);
+        return (chars[0] == null);
     }
 
     @Override
@@ -124,10 +91,49 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
 
     @Override
     public HuffmanNode Pop() {
-        // TODO:
-        HuffmanNode aux = new HuffmanNode('a', 3);         
-        return aux;
+        // for (HuffmanNode n : chars) {
+        //     if (n == null) {
+        //         System.out.print("_");
+        //         continue;
+        //     }
+        //     System.out.print(n.character);
+        // }
+        // System.out.println();
+        // System.out.println("=====================");
+
+        if (IsEmpty()) {
+            throw new IllegalStateException("El heap está vacio");
+        }
+    
+        HuffmanNode root = chars[0];
+    
+        chars[0] = chars[size - 1];
+        chars[size - 1] = null;
+        size--;
+    
+        heapify(0);
+    
+        return root;
+    }
+    
+    private void heapify(int index) {
+        int smallest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+
+        if (left < size && chars[left].weight < chars[smallest].weight) {
+            smallest = left;
+        }
+        if (right < size && chars[right].weight < chars[smallest].weight) {
+            smallest = right;
+        }
+    
+        if (smallest != index) {
+            HuffmanNode temp = chars[index];
+            chars[index] = chars[smallest];
+            chars[smallest] = temp;
+            
+            heapify(smallest);
+        }
     }
 }
-
-

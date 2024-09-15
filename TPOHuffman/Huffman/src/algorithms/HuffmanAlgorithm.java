@@ -1,15 +1,14 @@
 package algorithms;
 
 import api.Huffman.HuffmanTreeT;
+
 import impl.Huffman.HuffmanPriorityQueue.HuffmanNode;
-
-
 import impl.Huffman.HuffmanPriorityQueue;
-
+import impl.Huffman.HuffmanTree;
 
 public class HuffmanAlgorithm {
-    HuffmanPriorityQueue inputQueue;
-    HuffmanTreeT outputTree;
+    HuffmanPriorityQueue inputQueue = new HuffmanPriorityQueue();;
+    HuffmanTreeT outputTree = new HuffmanTree();
 
     // Constructor
     public HuffmanAlgorithm(char[] alphabet, double[] probabilities) throws Exception {
@@ -19,9 +18,9 @@ public class HuffmanAlgorithm {
 
         for (int i = 0; i < alphabet.length; i++) {
             inputQueue.AddValue(alphabet[i], probabilities[i]);
-        }
+        }   
         
-        for (int i = 1; i <= alphabet.length; i++){
+        for (int i = 1; i <= alphabet.length - 1; i++){
             HuffmanNode x = inputQueue.Pop();
             HuffmanNode y = inputQueue.Pop();
 
@@ -34,6 +33,6 @@ public class HuffmanAlgorithm {
     }
 
     public void PrintCodes() {
-        
+        outputTree.ImprimirArbol(outputTree);
     }
 }
