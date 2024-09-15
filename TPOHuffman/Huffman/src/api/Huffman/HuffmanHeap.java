@@ -1,9 +1,11 @@
 package api.Huffman;
 
+import impl.Huffman.HuffmanPriorityQueue.HuffmanNode;
+
 public interface HuffmanHeap {
-    void AddValue(Symbol value);
+    void AddValue(char character, double peso);
     boolean IsEmpty();
 
-    Symbol Pop();
+    HuffmanNode Pop();
     String GetCode(char character);
 }

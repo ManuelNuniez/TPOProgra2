@@ -1,42 +1,53 @@
 package impl.Huffman;
-import api.Huffman.HuffmanHeap;
-import api.Huffman.Symbol;
 
+import api.Huffman.HuffmanHeap;
 
 public class HuffmanPriorityQueue implements HuffmanHeap {
-    int i;
-    Symbol[] chars;
-    int capacity;
+    public class HuffmanNode {
+		HuffmanNode left;
+		HuffmanNode right;
+
+        char caracter;
+        double peso;
+
+        HuffmanNode(char caracter, double peso) {
+            this.caracter = caracter;
+            this.peso = peso;
+        }
+	}
+
+    int size;
+    int capacity = 127;
+    HuffmanNode[] chars;
 
     public HuffmanPriorityQueue() {
-        capacity = 10;
-        chars = new Symbol[capacity];
-        i = 0;
+        chars = new HuffmanNode[capacity];
+        size = 0;
     }
 
-    private void VectorReset() {
-        Symbol[] aux = new Symbol[capacity *10];
-        for (int j = 0; j < chars.length; j++) {
-            aux[j] = chars[j];
+    private void resizeVector() {
+        if (size != capacity) return;
+        
+        capacity = capacity*2 - 1;
+        HuffmanNode[] aux = new HuffmanNode[capacity];
+        for (int i = 0; i < size; i++) {
+            aux[i] = chars[i];
         }
         chars = aux;
-        capacity = capacity *10;
     }
 
     @Override
-    public void AddValue(Symbol value) {
-        if (capacity == i) {
-            VectorReset();
-        }
+    public void AddValue(char character, double peso) {
+        resizeVector();
         
-        chars[i] = value;
-        i++;
+        chars[size] = new HuffmanNode(character, peso);
+        size++;
 
-        int newPos = i-1;
+        int newPos = size-1;
         int padrePos = (newPos - 1)/2;
 
-        while (chars[padrePos].probability > chars[newPos].probability) {
-            Symbol aux = chars[padrePos];
+        while (chars[padrePos].peso > chars[newPos].peso) {
+            HuffmanNode aux = chars[padrePos];
             chars[padrePos] = chars[newPos];
             chars[newPos] = aux;
 
@@ -46,16 +57,16 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
     }
 
     public void SubtractH() {
-        i--;
-        chars[0] = chars[i];
+        size--;
+        chars[0] = chars[size];
 
         int father=0;
         int rightSon= 2;
         int leftSon= 1;
 
-        while (chars[father].probability > chars[leftSon].probability || chars[father].probability > chars[rightSon].probability) {
-            if (chars[leftSon].probability > chars[rightSon].probability) {
-                Symbol aux = chars[father];
+        while (chars[father].peso > chars[leftSon].peso || chars[father].peso > chars[rightSon].peso) {
+            if (chars[leftSon].peso > chars[rightSon].peso) {
+                HuffmanNode aux = chars[father];
                 chars[father] = chars[leftSon];
                 chars[leftSon] = aux;
 
@@ -63,8 +74,8 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
                 leftSon = 2*father +1;
                 rightSon = 2*father +2;
 
-            }else{
-                Symbol aux = chars[father];
+            } else {
+                HuffmanNode aux = chars[father];
                 chars[father] = chars[rightSon];
                 chars[rightSon] = aux;
                 
@@ -77,7 +88,7 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
     
     @Override
     public boolean IsEmpty() {
-        return (i == 0);
+        return (size == 0);
     }
 
     @Override
@@ -87,9 +98,10 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
     }
 
     @Override
-    public Symbol Pop() {
-        // TODO:         
-        return new Symbol();
+    public HuffmanNode Pop() {
+        // TODO:
+        HuffmanNode aux = new HuffmanNode('a', 3);         
+        return aux;
     }
 }
 
