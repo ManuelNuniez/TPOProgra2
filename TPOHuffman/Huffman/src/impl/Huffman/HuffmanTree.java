@@ -1,6 +1,7 @@
 package impl.Huffman;
 
 import api.Huffman.HuffmanTreeT;
+import impl.Huffman.HuffmanPriorityQueue.HuffmanNode;
 
 public class HuffmanTree implements HuffmanTreeT {
     public class NodoABB{
@@ -39,25 +40,21 @@ public class HuffmanTree implements HuffmanTreeT {
     }
 
     @Override
-    public void AgregarElem(char caracter, double peso) {
+    public void AgregarElem(HuffmanNode node) {
         NodoABB aux = new NodoABB();
-        aux.caracter = caracter;
-        aux.peso = peso;
-        aux.hijoDer = new HuffmanTree();
-        aux.hijoIzq = new HuffmanTree();
+        aux.caracter = node.getCharacter();
+        aux.peso = node.getWeight();
+
+    
 
         if (raiz == null){
             raiz = aux;
-            raiz.caracter = caracter;
-            raiz.peso = peso;
-            raiz.hijoDer = new HuffmanTree();
-            raiz.hijoIzq = new HuffmanTree();
         }
-        else if (raiz.peso > peso){
-            raiz.hijoIzq.AgregarElem(caracter, peso);
+        else if (raiz.peso > node.getWeight()){
+            raiz.hijoIzq.AgregarElem(node);
         }
-        else if (raiz.peso < peso){
-            raiz.hijoDer.AgregarElem(caracter, peso);
+        else if (raiz.peso < node.getWeight()){
+            raiz.hijoDer.AgregarElem(node);
         }
     }
 
@@ -70,5 +67,14 @@ public class HuffmanTree implements HuffmanTreeT {
     public double ObtenerProbabilidad() {
         return raiz.peso;
     }
+
+    public void ImprimirArbol(HuffmanTreeT arbol){
+        if (ArbolVacio()) {
+            ImprimirArbol(HijoIzq());
+            System.out.println(Raiz());
+            ImprimirArbol(HijoDer());
+        }
+    }
+
 
 }
