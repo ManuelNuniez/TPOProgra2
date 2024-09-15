@@ -62,27 +62,6 @@ public class HuffmanTree implements HuffmanTreeT {
     }
 
     @Override
-    public void AgregarElem(double peso) {
-        NodoABB aux = new NodoABB();
-        aux.peso = peso;
-        aux.hijoDer = new HuffmanTree();
-        aux.hijoIzq = new HuffmanTree();
-
-        if (raiz == null){
-            raiz = aux;
-            raiz.peso = peso;
-            raiz.hijoDer = new HuffmanTree();
-            raiz.hijoIzq = new HuffmanTree();
-        }
-        else if (raiz.peso > peso){
-            raiz.hijoIzq.AgregarElem(peso);
-        }
-        else if (raiz.peso < peso){
-            raiz.hijoDer.AgregarElem(peso);
-        }
-    }
-
-    @Override
     public char ObtenerCaracter() {
         return raiz.caracter;
     }

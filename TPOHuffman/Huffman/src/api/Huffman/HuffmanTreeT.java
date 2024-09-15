@@ -1,6 +1,7 @@
 package api.Huffman;
 
 import impl.Huffman.HuffmanTree.NodoABB;
+import impl.Huffman.HuffmanPriorityQueue.HuffmanNode;
 
 public interface HuffmanTreeT {
     NodoABB Raiz();
@@ -8,8 +9,7 @@ public interface HuffmanTreeT {
     HuffmanTreeT HijoDer();
     boolean ArbolVacio();
     
-    void AgregarElem(char caracter, double peso);
-    void AgregarElem(double peso);
+    void AgregarElem(HuffmanNode node);
 
     char ObtenerCaracter();
     double ObtenerProbabilidad();

@@ -14,6 +14,14 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
             this.caracter = caracter;
             this.peso = peso;
         }
+
+        public char getCharacter() {
+            return this.caracter;
+        }     
+
+        public double getWeight() {
+            return this.peso;
+        }     
 	}
 
     int size;
