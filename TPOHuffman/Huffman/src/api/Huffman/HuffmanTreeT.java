@@ -1,11 +1,12 @@
 package api.Huffman;
 
+import impl.Huffman.HuffmanTree.NodoABB;
+
 public interface HuffmanTreeT {
-    HuffmanTreeT Raiz();
+    NodoABB Raiz();
     HuffmanTreeT HijoIzq();
     HuffmanTreeT HijoDer();
     boolean ArbolVacio();
-    void InicializarArbol();
     void AgregarElem(char caracter, double peso);
 
     char ObtenerCaracter();

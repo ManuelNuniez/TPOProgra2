@@ -13,19 +13,24 @@ public class HuffmanTree implements HuffmanTreeT {
 
     NodoABB raiz;
 
+    
+    public HuffmanTree() {
+        raiz = null;
+    }
+
     @Override
-    public HuffmanTreeT Raiz() {
+    public NodoABB Raiz() {
         return raiz;
     }
 
     @Override
     public HuffmanTreeT HijoIzq() {
-        return raiz.HijoIzq;
+        return raiz.hijoIzq;
     }
 
     @Override
     public HuffmanTreeT HijoDer() {
-        return raiz.HijoDer;
+        return raiz.hijoDer;
     }
 
     @Override
@@ -34,64 +39,37 @@ public class HuffmanTree implements HuffmanTreeT {
     }
 
     @Override
-    public void InicializarArbol() {
-        raiz = null;
-    }
+    public void AgregarElem(char caracter, double peso) {
+        NodoABB aux = new NodoABB();
+        aux.caracter = caracter;
+        aux.peso = peso;
+        aux.hijoDer = new HuffmanTree();
+        aux.hijoIzq = new HuffmanTree();
 
-    @Override
-    public void AgregarElem(int x) {
         if (raiz == null){
-            raiz = new NodoABB();
-            raiz.Info = x;
-            raiz.HijoIzq = new HuffmanTree();
-            raiz.HijoIzq.InicializarArbol();
-            raiz.HijoDer = new HuffmanTree();
-            raiz.HijoDer.InicializarArbol();
+            raiz = aux;
+            raiz.caracter = caracter;
+            raiz.peso = peso;
+            raiz.hijoDer = new HuffmanTree();
+            raiz.hijoIzq = new HuffmanTree();
         }
-        else if (raiz.Info > x )
-            raiz.HijoIzq.AgregarElem(x);
-        else if (raiz.Info < x)
-            raiz.HijoDer.AgregarElem(x);
+        else if (raiz.peso > peso){
+            raiz.hijoIzq.AgregarElem(caracter, peso);
+        }
+        else if (raiz.peso < peso){
+            raiz.hijoDer.AgregarElem(caracter, peso);
+        }
+        
     }
 
     @Override
-    public void EliminarElem(int x) {
-        if (raiz != null) {
-            if (raiz.Info == x && raiz.HijoIzq.ArbolVacio() &&
-                raiz.HijoDer.ArbolVacio()) {
-                    raiz = null;
-        }
-        else if (raiz.Info == x && !raiz.HijoIzq.ArbolVacio()
-            ) {
-                raiz.Info = this.mayor(raiz.HijoIzq);//this marca la funcion que esta dentro de ArbolBB
-                raiz.HijoIzq.EliminarElem(raiz.Info);
-        }
-        else if (raiz.Info == x && raiz.HijoIzq.ArbolVacio())
-            {
-            raiz.Info = this.menor(raiz.HijoDer);
-            raiz.HijoDer.EliminarElem(raiz.Info);
-        }
-        else if (raiz.Info < x){
-            raiz.HijoDer.EliminarElem(x);
-        }
-        else{
-            raiz.HijoIzq.EliminarElem(x);
-        }
-        }
+    public char ObtenerCaracter() {
+        return raiz.caracter;
     }
 
-    private int mayor(HuffmanTreeT a){
-        if (a.HijoDer().ArbolVacio())
-            return a.Raiz();
-        else
-            return mayor(a.HijoDer());
-    
+    @Override
+    public double ObtenerProbabilidad() {
+        return raiz.peso;
     }
 
-    private int menor(HuffmanTreeT a){
-        if (a.HijoIzq().ArbolVacio())
-            return a.Raiz();
-        else
-            return menor(a.HijoIzq());
-    }
 }
