@@ -25,32 +25,15 @@ public class HuffmanAlgorithm {
             HuffmanNode x = inputQueue.Pop();
             HuffmanNode y = inputQueue.Pop();
 
-            // outputTree.AgregarElem(x.getWeight() + y.getWeight());
-            // outputTree.AgregarElem(x.getWeight());
-            // outputTree.AgregarElem(y.getWeight());
+            outputTree.AgregarElem(x);
+            outputTree.AgregarElem(y);
 
-            
+            double newWeight = x.getWeight() + y.getWeight();
+            inputQueue.AddValue(newWeight);
         }
     }
 
-    /*
-     * [a, b, c, d, e]
-     * [a-b, c, d, e]
-     * [a-b-c, d, e]
-     * [a-b-c-d, e]
-     * [a-b-c-d-e]
-    */
-
-
-
-    public String GetCode(char character){
-        // Necesito recorrer el heap y devolver en codigo binario, va a recorrer InOrder
-        // Una forma de obtener los hijos del heap
+    public void PrintCodes() {
         
-        
-
-        String code = "00";
-
-        return code;
     }
 }

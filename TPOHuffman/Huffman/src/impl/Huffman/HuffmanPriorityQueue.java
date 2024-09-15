@@ -3,24 +3,28 @@ package impl.Huffman;
 import api.Huffman.HuffmanHeap;
 
 public class HuffmanPriorityQueue implements HuffmanHeap {
-    public class HuffmanNode {
+    public static class HuffmanNode {
 		HuffmanNode left;
 		HuffmanNode right;
 
-        char caracter;
-        double peso;
+        char character;
+        double weight;
 
-        HuffmanNode(char caracter, double peso) {
-            this.caracter = caracter;
-            this.peso = peso;
+        HuffmanNode(char character, double weight) {
+            this.character = character;
+            this.weight = weight;
+        }
+
+        HuffmanNode(double peso) {
+            this.weight = peso;
         }
 
         public char getCharacter() {
-            return this.caracter;
-        }     
+            return this.character;
+        }
 
         public double getWeight() {
-            return this.peso;
+            return this.weight;
         }     
 	}
 
@@ -44,17 +48,14 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
         chars = aux;
     }
 
-    @Override
-    public void AddValue(char character, double peso) {
-        resizeVector();
-        
-        chars[size] = new HuffmanNode(character, peso);
+    private void addNode(HuffmanNode node) {
+        chars[size] = node;
         size++;
 
         int newPos = size-1;
         int padrePos = (newPos - 1)/2;
 
-        while (chars[padrePos].peso > chars[newPos].peso) {
+        while (chars[padrePos].weight > chars[newPos].weight) {
             HuffmanNode aux = chars[padrePos];
             chars[padrePos] = chars[newPos];
             chars[newPos] = aux;
@@ -62,6 +63,22 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
             newPos = padrePos;
             padrePos = (newPos - 1)/2;
         }
+    }
+
+    @Override
+    public void AddValue(char character, double weight) {
+        resizeVector();
+        
+        HuffmanNode newNode = new HuffmanNode(character, weight);
+        addNode(newNode);
+    }
+
+    @Override
+    public void AddValue(double weight) {
+        resizeVector();
+        
+        HuffmanNode newNode = new HuffmanNode(weight);
+        addNode(newNode);
     }
 
     public void SubtractH() {
@@ -72,8 +89,8 @@ public class HuffmanPriorityQueue implements HuffmanHeap {
         int rightSon= 2;
         int leftSon= 1;
 
-        while (chars[father].peso > chars[leftSon].peso || chars[father].peso > chars[rightSon].peso) {
-            if (chars[leftSon].peso > chars[rightSon].peso) {
+        while (chars[father].weight > chars[leftSon].weight || chars[father].weight > chars[rightSon].weight) {
+            if (chars[leftSon].weight > chars[rightSon].weight) {
                 HuffmanNode aux = chars[father];
                 chars[father] = chars[leftSon];
                 chars[leftSon] = aux;
