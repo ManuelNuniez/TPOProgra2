@@ -19,7 +19,7 @@ public class HuffmanAlgorithm {
         for (int i = 0; i < alphabet.length; i++) {
             inputQueue.AddValue(alphabet[i], probabilities[i]);
         }   
-        
+
         for (int i = 1; i <= alphabet.length - 1; i++){
             HuffmanNode x = inputQueue.Pop();
             HuffmanNode y = inputQueue.Pop();
