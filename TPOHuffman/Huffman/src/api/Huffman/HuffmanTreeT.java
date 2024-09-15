@@ -13,4 +13,6 @@ public interface HuffmanTreeT {
 
     char ObtenerCaracter();
     double ObtenerProbabilidad();
+
+    void ImprimirArbol(HuffmanTreeT arbol);
 }
