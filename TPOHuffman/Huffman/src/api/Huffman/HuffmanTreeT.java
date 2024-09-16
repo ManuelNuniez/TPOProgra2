@@ -9,7 +9,7 @@ public interface HuffmanTreeT {
     HuffmanTreeT HijoDer();
     boolean ArbolVacio();
     
-    void AgregarElem(HuffmanNode node1, HuffmanNode node2);
+    void AgregarElem(HuffmanNode node);
 
     char ObtenerCaracter();
     double ObtenerProbabilidad();

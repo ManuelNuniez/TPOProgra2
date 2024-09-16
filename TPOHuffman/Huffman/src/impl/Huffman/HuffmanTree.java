@@ -39,47 +39,22 @@ public class HuffmanTree implements HuffmanTreeT {
         return (raiz == null);
     }
 
-    private void setTreeRoot(HuffmanTreeT root, HuffmanNode node) {
-        // TODO: .Raiz puede ser null
-
-        root.Raiz().caracter = node.getCharacter(); 
-        root.Raiz().peso = node.getWeight(); 
-    }
-
     @Override
-    public void AgregarElem(HuffmanNode leftNode, HuffmanNode rightNode) {
-        NodoABB newRoot = new NodoABB();
-        newRoot.peso = leftNode.getWeight() + rightNode.getWeight();
-        
-        if (leftNode.getWeight() > rightNode.getWeight()) {
-            newRoot.hijoIzq = new HuffmanTree();
-            setTreeRoot(newRoot.hijoIzq, leftNode);
+    public void AgregarElem(HuffmanNode node) {
+        if (this.ArbolVacio()) {
+            raiz = new NodoABB();
+            raiz.caracter = node.getCharacter();
+            raiz.peso = node.getWeight();
 
-            newRoot.hijoDer = new HuffmanTree();
-            setTreeRoot(newRoot.hijoIzq, rightNode);
-        } 
-        else {
-            newRoot.hijoIzq = new HuffmanTree();
-            setTreeRoot(newRoot.hijoIzq, rightNode);
-
-            newRoot.hijoDer = new HuffmanTree();
-            setTreeRoot(newRoot.hijoIzq, leftNode);
+            raiz.hijoIzq = new HuffmanTree();
+            raiz.hijoDer = new HuffmanTree();
         }
-
-        // if (this.ArbolVacio()) {
-        //     raiz = new NodoABB();
-        //     raiz.caracter = node.getCharacter();
-        //     raiz.peso = node.getWeight();
-
-        //     raiz.hijoIzq = new HuffmanTree();
-        //     raiz.hijoDer = new HuffmanTree();
-        // }
-        // else if (raiz.peso < node.getWeight()) {
-        //     raiz.hijoIzq.AgregarElem(node);
-        // }
-        // else if (raiz.peso >= node.getWeight()) {
-        //     raiz.hijoDer.AgregarElem(node);
-        // }
+        else if (raiz.peso < node.getWeight()) {
+            raiz.hijoIzq.AgregarElem(node);
+        }
+        else if (raiz.peso >= node.getWeight()) {
+            raiz.hijoDer.AgregarElem(node);
+        }
     }
 
     @Override
