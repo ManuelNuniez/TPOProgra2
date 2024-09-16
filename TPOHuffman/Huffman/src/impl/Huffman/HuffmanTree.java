@@ -9,7 +9,7 @@ public class HuffmanTree implements HuffmanTreeT {
 		HuffmanTreeT hijoDer;
 
         char caracter;
-        double peso;
+        public double peso;
 	}
 
     NodoABB raiz;
